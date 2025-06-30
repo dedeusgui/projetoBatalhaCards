@@ -1,0 +1,188 @@
+:root {
+  --fundo-principal: #58637b;
+  --cor-cartao: #ffffff;
+  --cor-borda: #49668c;
+
+  --dourado-claro: #f2d272;
+  --dourado-escuro: #585950;
+
+  --texto-principal: #49668c;
+  --texto-secundario: #3b3b3b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fundo-principal);
+  color: var(--texto-secundario);
+  font-family: "Georgia", serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  flex-direction: column;
+  margin-bottom: 5px;
+  background-color: var(--cor-borda);
+  color: var(--cor-cartao);
+  text-align: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dourado-claro);
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 20px 0;
+}
+
+.arenas {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 60px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.arena1,
+.arena2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 300px;
+  background-color: var(--cor-borda);
+  border-radius: 8px;
+  color: var(--cor-cartao);
+  font-weight: bold;
+}
+
+.log {
+  background-color: var(--cor-borda);
+  border-radius: 8px;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.log button {
+  background-color: var(--dourado-claro);
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.log button:hover {
+  background-color: #e0c25f;
+}
+
+.infolog {
+  width: 90%;
+  height: 180px;
+  background-color: var(--fundo-principal);
+  border-radius: 6px;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.subtitle {
+  background-color: var(--dourado-escuro);
+  color: white;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 5px 15px;
+  margin-bottom: 0;
+}
+
+.deck {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 cartas por linha */
+  grid-template-rows: repeat(2, auto); /* 2 linhas automáticas */
+  gap: 20px;
+  width: 70%; /* ou 100% se quiser ocupar toda a largura */
+  padding: 20px;
+  height: 70%;
+  background-color: var(--dourado-escuro);
+  border-radius: 10px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.card {
+  width: 100%; /* se ajusta automaticamente à coluna do grid */
+  aspect-ratio: 3 / 4; /* mantém proporção ao redimensionar (largura:altura) */
+  max-height: 250px;
+  background-color: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.3s, width 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-img {
+  background-color: var(--dourado-claro);
+  width: 100%;
+  height: 50%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.card-img {
+  background-color: var(--dourado-claro);
+  width: 100%;
+  height: 120px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2em;
+  color: var(--texto-principal);
+}
+
+.card p {
+  color: var(--texto-secundario);
+  font-size: 0.95em;
+}
+
+.areaGuerreiro1,
+.areaGuerreiro2 {
+  margin-top: 10px;
+  width: 90%;
+  height: 100px;
+  background-color: var(--fundo-principal);
+  border-radius: 6px;
+}
