@@ -1,130 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panteão dos Deuses ⚔️</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header>
-    <div class="title"><h1>⚡ Panteão dos Deuses</h1></div>
-    <div><p>"Onde os deuses lutam pela supremacia eterna!"</p></div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panteão dos Deuses ⚔️</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="title"><h1>⚡ Panteão dos Deuses</h1></div>
+      <div><p>"Onde os deuses lutam pela supremacia eterna!"</p></div>
+    </header>
 
-  <main>
-    <section class="arenas">
-      <div class="arena1">
-        ⚔️ Arena 1
-        <div class="areaGuerreiro1"></div>
-      </div>
-
-      <div class="log">
-        <button>⚔️ Batalhar</button>
-        <div class="infolog">📜 Registro da batalha</div>
-        <button>🔁 Resetar Jogo</button>
-      </div>
-
-      <div class="arena2">
-        ⚔️ Arena 2
-        <div class="areaGuerreiro2"></div>
-      </div>
-    </section>
-
-    <h2 class="subtitle">🌟 Escolha seus deuses!</h2>
-
-    <section class="deck">
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>⚡ Zeus</h3>
-          <p>Ataque: 9</p>
-          <p>Defesa: 7</p>
+    <main>
+      <section class="arenas">
+        <div class="arena1">
+          ⚔️ Arena 1
+          <div class="areaGuerreiro1">
+            <p>Arraste um Deus aqui</p>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>💀 Hades</h3>
-          <p>Ataque: 7</p>
-          <p>Defesa: 8</p>
+        <div class="log">
+          <button>⚔️ Batalhar</button>
+          <div class="infolog">📜 Registro da batalha</div>
+          <button>🔁 Resetar Jogo</button>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>🛡️ Atena</h3>
-          <p>Ataque: 6</p>
-          <p>Defesa: 9</p>
+        <div class="arena2">
+          ⚔️ Arena 2
+          <div class="areaGuerreiro2">
+            <p>Arraste um Deus aqui</p>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>🔨 Thor</h3>
-          <p>Ataque: 8</p>
-          <p>Defesa: 8</p>
-        </div>
-      </div>
+      <h2 class="subtitle">🌟 Escolha seus deuses!</h2>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>🐺 Anúbis</h3>
-          <p>Ataque: 7</p>
-          <p>Defesa: 6</p>
+      <section class="deck">
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/zeus.png" draggable="false" />
+            </div>
+            <h3>⚡️ Zeus</h3>
+            <p>⚔️ Ataque: 9</p>
+            <p>🛡️ Defesa: 7</p>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>🌊 Poseidon</h3>
-          <p>Ataque: 8</p>
-          <p>Defesa: 7</p>
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/hades.png" draggable="false" />
+            </div>
+            <h3>💀 Hades</h3>
+            <p>⚔️ Ataque: 7</p>
+            <p>🛡️ Defesa: 8</p>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>👑 Hera</h3>
-          <p>Ataque: 6</p>
-          <p>Defesa: 8</p>
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/atena.png" draggable="false" />
+            </div>
+            <h3>🛡️ Atena</h3>
+            <p>⚔️ Ataque: 6</p>
+            <p>🛡️ Defesa: 9</p>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>🎯 Apolo</h3>
-          <p>Ataque: 7</p>
-          <p>Defesa: 7</p>
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/thor.png" draggable="false" />
+            </div>
+            <h3>🔨 Thor</h3>
+            <p>⚔️ Ataque: 8</p>
+            <p>🛡️ Defesa: 8</p>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>⚔️ Ares</h3>
-          <p>Ataque: 9</p>
-          <p>Defesa: 5</p>
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/anubis.png" draggable="false" />
+            </div>
+            <h3>🐺 Anúbis</h3>
+            <p>⚔️ Ataque: 7</p>
+            <p>🛡️ Defesa: 6</p>
+          </div>
         </div>
-      </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-img"></div>
-          <h3>🕊️ Hermes</h3>
-          <p>Ataque: 7</p>
-          <p>Defesa: 6</p>
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/poseidon.png" draggable="false" />
+            </div>
+            <h3>🌊 Poseidon</h3>
+            <p>⚔️ Ataque: 8</p>
+            <p>🛡️ Defesa: 7</p>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-</body>
+
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/hera.png" draggable="false" />
+            </div>
+            <h3>👑 Hera</h3>
+            <p>⚔️ Ataque: 6</p>
+            <p>🛡️ Defesa: 8</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/apolo.png" draggable="false" />
+            </div>
+            <h3>🎯 Apolo</h3>
+            <p>⚔️ Ataque: 7</p>
+            <p>🛡️ Defesa: 7</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/ares.png" draggable="false" />
+            </div>
+            <h3>⚔️ Ares</h3>
+            <p>⚔️ Ataque: 9</p>
+            <p>🛡️ Defesa: 5</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card" draggable="true">
+            <div class="card-img">
+              <img src="img/hermes.png" draggable="false" />
+            </div>
+            <h3>🕊️ Hermes</h3>
+            <p>⚔️ Ataque: 7</p>
+            <p>🛡️ Defesa: 6</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

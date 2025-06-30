@@ -1,4 +1,5 @@
 :root {
+  /* Paleta */
   --fundo-principal: #58637b;
   --cor-cartao: #ffffff;
   --cor-borda: #49668c;
@@ -8,12 +9,56 @@
 
   --texto-principal: #49668c;
   --texto-secundario: #3b3b3b;
+
+  /* Tempo & easing globais */
+  --tempo-trans: 0.35s;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ---------- KEYFRAMES ---------- */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 var(--dourado-claro);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--dourado-claro);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+}
+
+/* ---------- BASE ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color var(--tempo-trans) var(--ease),
+    color var(--tempo-trans) var(--ease),
+    box-shadow var(--tempo-trans) var(--ease),
+    transform var(--tempo-trans) var(--ease),
+    letter-spacing var(--tempo-trans) var(--ease);
 }
 
 body {
@@ -22,167 +67,276 @@ body {
   font-family: "Georgia", serif;
 }
 
+/* ---------- HEADER ---------- */
 header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 80px;
-  flex-direction: column;
-  margin-bottom: 5px;
   background-color: var(--cor-borda);
   color: var(--cor-cartao);
-  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
+header h1:hover {
+  text-shadow: 0 0 8px var(--dourado-claro);
+  letter-spacing: 1px;
+  animation: wiggle 0.6s ease-in-out;
+}
+
+/* ---------- MAIN ---------- */
 main {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   background-color: var(--dourado-claro);
   width: 100%;
   min-height: calc(100vh - 80px);
   padding: 20px 0;
 }
 
+/* ---------- ARENAS ---------- */
 .arenas {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   gap: 60px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .arena1,
 .arena2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 200px;
   width: 300px;
   background-color: var(--cor-borda);
   border-radius: 8px;
   color: var(--cor-cartao);
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
+.arena1:hover,
+.arena2:hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Drop zones */
+.areaGuerreiro1,
+.areaGuerreiro2 {
+  margin-top: 10px;
+  width: 90%;
+  height: 150px;
+  background-color: var(--fundo-principal);
+  border: 2px dotted #3b3b3b;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.areaGuerreiro1:hover,
+.areaGuerreiro2:hover {
+  background-color: #6b7894;
+}
+
+/* ---------- LOG ---------- */
 .log {
   background-color: var(--cor-borda);
   border-radius: 8px;
   height: 300px;
   width: 300px;
+  padding: 15px;
+  color: var(--cor-cartao);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  padding: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.log:hover {
+  animation: float 4s ease-in-out infinite;
 }
 
 .log button {
   background-color: var(--dourado-claro);
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .log button:hover {
-  background-color: #e0c25f;
+  background-color: #e7c764;
+  transform: scale(1.08);
+}
+
+.log button:active {
+  transform: scale(0.95);
 }
 
 .infolog {
-  width: 90%;
+  width: 100%;
   height: 180px;
   background-color: var(--fundo-principal);
   border-radius: 6px;
-  color: white;
-  padding: 8px;
-  font-size: 14px;
+  padding: 10px;
+  color: #fff;
+  overflow-y: auto;
 }
 
+/* ---------- SUBTITLE ---------- */
 .subtitle {
   background-color: var(--dourado-escuro);
-  color: white;
+  color: #fff;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  padding: 5px 15px;
-  margin-bottom: 0;
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
+.subtitle:hover {
+  letter-spacing: 1px;
+}
+
+/* ---------- DECK ---------- */
 .deck {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 cartas por linha */
-  grid-template-rows: repeat(2, auto); /* 2 linhas automáticas */
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
   gap: 20px;
-  width: 70%; /* ou 100% se quiser ocupar toda a largura */
+  width: 70%;
   padding: 20px;
   height: 70%;
   background-color: var(--dourado-escuro);
   border-radius: 10px;
   margin: 0 auto;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* ---------- CARDS ---------- */
 .card {
-  width: 100%; /* se ajusta automaticamente à coluna do grid */
-  aspect-ratio: 3 / 4; /* mantém proporção ao redimensionar (largura:altura) */
-  max-height: 250px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 300px;
   background-color: var(--cor-cartao);
-  border: 1px solid var(--cor-borda);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--cor-borda);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
-  transition: transform 0.3s, width 0.3s;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
+/* Efeito 3D de hover */
 .card:hover {
-  transform: scale(1.03);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4); /* Aumenta a sombra ao passar o mouse */
+  border-color: var(--dourado-claro); /* Destaca a borda */
+  animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite; /* Animação de flutuação e pulsação contínua */
 }
 
+/* Imagem */
 .card-img {
-  background-color: var(--dourado-claro);
   width: 100%;
-  height: 50%;
-  border-radius: 6px;
+  height: 140px;
+  background-color: var(--dourado-claro);
+  border-radius: 10px;
   margin-bottom: 10px;
+  overflow: hidden;
 }
 
-.card:hover {
-  transform: scale(1.03);
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform var(--tempo-trans) var(--ease),
+    filter var(--tempo-trans) var(--ease);
+}
+
+.card-img:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.15) saturate(1.3);
+  animation: pulse 1.6s infinite;
+}
+
+/* Título */
+.card h3 {
+  font-size: 1.3em;
+  color: var(--texto-principal);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card:hover h3 {
+  letter-spacing: 2px;
+}
+
+/* Atributos */
+.card p {
+  font-size: 1em;
+  margin: 4px 0;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 4px 10px;
+  width: fit-content;
+  margin-inline: auto;
+  background-color: rgba(88, 99, 123, 0.1);
+}
+
+.card p:first-of-type {
+  color: #d32f2f;
+  background-color: rgba(211, 47, 47, 0.1);
+  border-left: 4px solid #d32f2f;
+  transition: all 0.3 ease;
+}
+
+.card p:first-of-type:hover {
+  transform: scale(1.05);
+  background-color: rgba(211, 47, 47, 0.2);
   cursor: pointer;
 }
 
-.card-img {
+.card p:last-of-type {
+  color: #388e3c;
+  background-color: rgba(56, 142, 60, 0.1);
+  border-left: 4px solid #388e3c;
+  transition: all 0.3 ease;
+}
+
+.card p:last-of-type:hover {
+  transform: scale(1.05);
+  background-color: rgba(56, 142, 60, 0.2);
+  cursor: pointer;
+}
+
+.card:hover p {
+  transform: scale(1.05);
+}
+
+::selection {
   background-color: var(--dourado-claro);
-  width: 100%;
-  height: 120px;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px var(--dourado-claro);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card h3 {
-  font-size: 1.2em;
-  color: var(--texto-principal);
-}
-
-.card p {
-  color: var(--texto-secundario);
-  font-size: 0.95em;
-}
-
-.areaGuerreiro1,
-.areaGuerreiro2 {
-  margin-top: 10px;
-  width: 90%;
-  height: 100px;
-  background-color: var(--fundo-principal);
-  border-radius: 6px;
+h1,
+h2,
+h3 {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
