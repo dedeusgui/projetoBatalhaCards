@@ -12,12 +12,19 @@
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0% {
     box-shadow: 0 0 0 var(--dourado-claro);
+    transform: scale(1);
+    border-color: var(--dourado-claro);
   }
   50% {
-    box-shadow: 0 0 15px var(--dourado-claro);
+    box-shadow: 0 0 25px var(--dourado-claro);
+    transform: scale(1.015);
+  }
+  100% {
+    box-shadow: 0 0 0 var(--dourado-claro);
+    transform: scale(1);
+    border-color: var(--dourado-claro);
   }
 }
 
@@ -27,14 +34,14 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-10px);
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.7);
+    transform: scale(0.98);
   }
   to {
     opacity: 1;
@@ -45,7 +52,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -53,13 +60,21 @@
   }
 }
 
+@keyframes cardHoverEnter {
+  from {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  }
+  to {
+    transform: translateY(-4px) scale(1.035);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background-color var(--tempo-trans) var(--ease),
-    color var(--tempo-trans) var(--ease),
-    letter-spacing var(--tempo-trans) var(--ease);
 }
 
 body {
@@ -78,6 +93,7 @@ header {
   background-color: var(--cor-borda);
   color: var(--cor-cartao);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: var(--texto-secundario) 0 1px 2px;
 }
 
 main {
@@ -214,7 +230,7 @@ main {
 .infolog p {
   line-height: 1.6;
   font-size: 0.95em;
-  animation: slideIn 0.2s ease-out;
+  animation: slideIn 0.5s ease-out forwards;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
 }
 
@@ -251,11 +267,18 @@ main {
   overflow: hidden;
   position: relative;
   cursor: grab;
-  opacity: 0.7;
-  animation: fadeIn 0.5s ease-out backwards;
-  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out,
-    opacity 0.05s ease-out, border-color var(--tempo-trans) var(--ease),
+  opacity: 0.8;
+  animation: fadeIn 0.5s ease-out forwards;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out,
+    opacity 0.3s ease-out, border-color var(--tempo-trans) var(--ease),
     background-color var(--tempo-trans) var(--ease);
+
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 4px 4px;
 }
 
 .card:nth-child(1) {
@@ -294,9 +317,8 @@ main {
   opacity: 1;
   outline: none;
   border-color: var(--dourado-claro);
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+  animation: cardHoverEnter 0.25s ease-out forwards,
+    float 3s ease-in-out 0.25s infinite, pulse 1.6s ease-in-out 0.25s infinite;
 }
 
 .card-img {
@@ -345,6 +367,7 @@ main {
 }
 
 .card h3 {
+  text-shadow: var(--dourado-escuro) 0 1px 2px;
   font-size: 1.5em;
   color: var(--texto-principal);
   font-weight: 800;
@@ -402,9 +425,9 @@ main {
 .areaGuerreiro2.drag-over {
   background-color: #4a4a4a;
   border: 2px dashed #00ff7f;
-  box-shadow: 0 0 40px rgba(0, 255, 127, 1);
+  box-shadow: 0 0 45px rgba(0, 255, 127, 1);
   transform: scale(1.02);
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 1.6s ease-in-out infinite;
 }
 
 .areaGuerreiro1.drag-over p,
@@ -418,8 +441,9 @@ main {
 .deck.drag-over-deck {
   background-color: #4a4a4a;
   border: 2px dashed var(--dourado-claro);
-  box-shadow: 0 0 25px rgba(242, 210, 114, 0.9);
+  box-shadow: 0 0 30px rgba(242, 210, 114, 0.9);
   transform: scale(1.01);
+  animation: pulse 1.6s ease-in-out infinite;
 }
 
 #zeus {
