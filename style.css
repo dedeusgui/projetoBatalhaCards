@@ -1,17 +1,22 @@
 :root {
-  --fundo-principal: #58637b;
-  --cor-cartao: #ffffff;
-  --cor-borda: #49668c;
-  --dourado-claro: #f2d272;
-  --dourado-escuro: #585950;
-  --texto-principal: #49668c;
-  --texto-secundario: #3b3b3b;
-  --tempo-trans: 0.35s;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --tempo-drag-drop: 0.3s;
+  /* Variáveis CSS: Definem propriedades personalizadas reutilizáveis
+     para cores, tempos de transição, etc. */
+  --fundo-principal: #58637b; /* Cor de fundo principal */
+  --cor-cartao: #ffffff; /* Cor de fundo do cartão */
+  --cor-borda: #49668c; /* Cor da borda */
+  --dourado-claro: #f2d272; /* Cor dourado claro */
+  --dourado-escuro: #585950; /* Cor dourado escuro */
+  --texto-principal: #49668c; /* Cor do texto principal */
+  --texto-secundario: #3b3b3b; /* Cor do texto secundário */
+  --tempo-trans: 0.35s; /* Tempo de transição padrão */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1); /* Função de easing para transições */
+  --tempo-drag-drop: 0.3s; /* Tempo de transição para drag and drop */
 }
 
+/* Animações Keyframe: Definem sequências de estilos para animações CSS. */
+
 @keyframes pulse {
+  /* Animação 'pulse' cria um efeito pulsante. */
   0% {
     box-shadow: 0 0 0 var(--dourado-claro);
     transform: scale(1);
@@ -29,6 +34,7 @@
 }
 
 @keyframes float {
+  /* Animação 'float' cria um movimento sutil de flutuação para cima e para baixo. */
   0%,
   100% {
     transform: translateY(0);
@@ -39,6 +45,7 @@
 }
 
 @keyframes fadeIn {
+  /* Animação 'fadeIn' faz um elemento aparecer gradualmente. */
   from {
     opacity: 0;
     transform: scale(0.98);
@@ -50,6 +57,7 @@
 }
 
 @keyframes slideIn {
+  /* Animação 'slideIn' faz um elemento deslizar de baixo para cima enquanto aparece. */
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -61,6 +69,7 @@
 }
 
 @keyframes cardHoverEnter {
+  /* Animação 'cardHoverEnter' simula o efeito de uma carta "levantando" ao passar o mouse. */
   from {
     transform: translateY(0) scale(1);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
@@ -71,20 +80,24 @@
   }
 }
 
+/* Reset Global e Estilos Base */
 * {
+  /* Reset de margens e preenchimentos padrão do navegador e box-sizing. */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  background-color: var(--fundo-principal);
+  /* Estilos do corpo: define fundo, cor do texto, fonte e previne rolagem horizontal. */
+  background-color: var(--dourado-claro);
   color: var(--texto-secundario);
   font-family: "Georgia", serif;
   overflow-x: hidden;
 }
 
 header {
+  /* Estilos para o cabeçalho. */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,20 +106,25 @@ header {
   background-color: var(--cor-borda);
   color: var(--cor-cartao);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  text-shadow: var(--texto-secundario) 0 1px 2px;
+  text-shadow: 1px 1px 0 var(--texto-secundario), 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 main {
+  /* Estilos para a área de conteúdo principal. */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--dourado-claro);
   width: 100%;
-  min-height: calc(100vh - 80px);
+  min-height: calc(
+    100vh - 80px
+  ); /* Altura total da viewport menos a altura do cabeçalho. */
   padding: 15px 0;
 }
 
+/* Seções de Arena e Log */
 .arenas {
+  /* Layout para as duas áreas de "arena". */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -117,6 +135,7 @@ main {
 
 .arena1,
 .arena2 {
+  /* Estilos para os contêineres individuais da arena. */
   height: 400px;
   width: 400px;
   background-color: #3f4a5e;
@@ -129,10 +148,13 @@ main {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .areaGuerreiro1,
 .areaGuerreiro2 {
+  /* Estilos para as zonas de drop dentro das arenas. */
   margin-top: 10px;
   width: 90%;
   height: 300px;
@@ -145,6 +167,7 @@ main {
   color: #fff;
   position: relative;
   overflow: hidden;
+  /* Transições para efeitos de drag-over. */
   transition: background-color var(--tempo-drag-drop) ease-out,
     border var(--tempo-drag-drop) ease-out,
     box-shadow var(--tempo-drag-drop) ease-out,
@@ -153,6 +176,7 @@ main {
 
 .areaGuerreiro1 p,
 .areaGuerreiro2 p {
+  /* Estilo para o texto de placeholder em zonas de drop vazias. */
   font-size: 1.1em;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
@@ -161,6 +185,7 @@ main {
 
 .areaGuerreiro1 .card,
 .areaGuerreiro2 .card {
+  /* Estilo para as cartas uma vez que são soltas em uma arena. */
   width: 100%;
   height: 100%;
   margin: 0;
@@ -176,14 +201,15 @@ main {
   overflow: hidden;
   transition: transform var(--tempo-drag-drop) ease-out,
     opacity var(--tempo-drag-drop) ease-out;
-  animation: fadeIn 0.5s ease-out backwards;
+  animation: fadeIn 0.5s ease-out backwards; /* Animação de fade-in para cartas soltas. */
 }
 
 .log {
+  /* Estilo para a área do log de batalha. */
   background-color: #404652;
   border-radius: 8px;
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
   padding: 15px;
   color: var(--cor-cartao);
   display: flex;
@@ -195,6 +221,7 @@ main {
 }
 
 .log button {
+  /* Estilo para os botões dentro do log (ex: "Batalha" e "Reset"). */
   background-color: var(--dourado-claro);
   border: none;
   padding: 10px 20px;
@@ -207,38 +234,78 @@ main {
 }
 
 .log button:hover {
+  /* Efeitos de hover para os botões do log. */
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .log button:focus {
+  /* Efeitos de foco para os botões do log. */
   outline: 2px solid var(--cor-cartao);
   outline-offset: 2px;
   transform: scale(1.02);
 }
 
 .infolog {
+  /* Estilo para a área de mensagens de batalha, com rolagem. */
   width: 100%;
-  height: 180px;
+  height: 280px;
   background-color: #30353f;
   border-radius: 6px;
   padding: 10px;
   color: #e0e0e0;
-  overflow-y: auto;
+  overflow-y: auto; /* Habilita rolagem vertical se o conteúdo transbordar. */
   border: 1px solid var(--cor-borda);
+  font-size: large;
+  font-weight: bolder;
+  /* --- Estilização da Barra de Rolagem (Chrome, Edge, Safari) --- */
+
+  /* Largura da barra de rolagem */
+  &::-webkit-scrollbar {
+    width: 12px; /* Largura da barra vertical */
+    height: 12px; /* Altura da barra horizontal (se houver) */
+  }
+
+  /* Trilha (o fundo da barra de rolagem) */
+  &::-webkit-scrollbar-track {
+    background: #252a32; /* Cor de fundo da trilha, um tom mais escuro que o fundo do log */
+    border-radius: 10px; /* Borda arredondada para a trilha */
+  }
+
+  /* Polegar (a parte arrastável da barra de rolagem) */
+  &::-webkit-scrollbar-thumb {
+    background-color: var(
+      --dourado-claro
+    ); /* Usa sua cor dourada para o polegar */
+    border-radius: 10px; /* Borda arredondada para o polegar */
+    border: 3px solid #252a32; /* Uma borda para "encaixar" o polegar na trilha */
+  }
+
+  /* Polegar ao passar o mouse */
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #e0b842; /* Um dourado um pouco mais escuro no hover */
+  }
+
+  /* --- Fim da Estilização da Barra de Rolagem --- */
 }
 
 .infolog p {
+  /* Estilo para mensagens individuais do log. */
   line-height: 1.6;
   font-size: 0.95em;
-  animation: slideIn 0.5s ease-out forwards;
+  animation: slideIn 0.5s ease-out forwards; /* Animação de slide-in para novas mensagens. */
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
 }
 
+/* Baralho de Cartas e Estilo de Cartas Individuais */
 .deck {
+  /* Estilo para o contêiner do baralho, usando CSS Grid para o layout. */
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(5, 1fr); /* 5 colunas de largura igual. */
+  grid-template-rows: repeat(
+    2,
+    auto
+  ); /* 2 linhas, altura determinada pelo conteúdo. */
   gap: 20px;
   width: 80%;
   padding: 20px;
@@ -253,8 +320,9 @@ main {
 }
 
 .card {
+  /* Estilo geral para cada carta individual. */
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 4; /* Mantém uma proporção de 3:4. */
   max-height: 300px;
   background-color: var(--cor-cartao);
   border: 2px solid var(--cor-borda);
@@ -267,13 +335,12 @@ main {
   text-align: center;
   overflow: hidden;
   position: relative;
-  cursor: grab;
+  cursor: grab; /* Cursor indica que o item é arrastável. */
   opacity: 0.8;
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards; /* Animação de fade-in para as cartas. */
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out,
     opacity 0.3s ease-out, border-color var(--tempo-trans) var(--ease),
     background-color var(--tempo-trans) var(--ease);
-
   background-image: radial-gradient(
     circle,
     rgba(0, 0, 0, 0.1) 1px,
@@ -282,6 +349,7 @@ main {
   background-size: 4px 4px;
 }
 
+/* Atrasos de Animação para Cartas: Efeito de fade-in escalonado para cada carta. */
 .card:nth-child(1) {
   animation-delay: 0.05s;
 }
@@ -315,6 +383,7 @@ main {
 
 .card:hover,
 .card:focus {
+  /* Efeitos de hover e foco para cartas, incluindo levantar, brilho e animação de pulso. */
   opacity: 1;
   outline: none;
   border-color: var(--dourado-claro);
@@ -323,6 +392,7 @@ main {
 }
 
 .card-img {
+  /* Estilo para o contêiner da imagem dentro de cada carta. */
   width: 100%;
   height: 140px;
   background-color: var(--dourado-claro);
@@ -333,6 +403,7 @@ main {
 }
 
 .card-img::after {
+  /* Pseudo-elemento para um efeito sutil de "brilho" na imagem da carta. */
   content: "";
   position: absolute;
   top: 0;
@@ -350,10 +421,12 @@ main {
 }
 
 .card-img:hover::after {
+  /* Anima o efeito de brilho ao passar o mouse. */
   transform: translateX(100%);
 }
 
 .card-img img {
+  /* Estilo para a própria imagem dentro da carta. */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -363,11 +436,13 @@ main {
 }
 
 .card-img:hover img {
+  /* Zoom da imagem e ajuste de brilho ao passar o mouse. */
   transform: scale(1.08);
   filter: brightness(1.1);
 }
 
 .card h3 {
+  /* Estilo para o título da carta (nome do Deus). */
   text-shadow: var(--dourado-escuro) 0 1px 2px;
   font-size: 1.5em;
   color: var(--texto-principal);
@@ -378,12 +453,14 @@ main {
 }
 
 .card h3:hover {
+  /* Efeitos de hover para o título da carta. */
   color: var(--dourado-claro);
   transform: scale(1.05);
   text-shadow: 0 0 8px rgba(242, 210, 114, 0.8);
 }
 
 .card p {
+  /* Estilo geral para parágrafos dentro da carta (ex: Ataque/Defesa). */
   font-size: 1em;
   margin: 4px 0;
   font-weight: 600;
@@ -397,42 +474,49 @@ main {
 }
 
 .card p:hover {
+  /* Efeitos de hover para parágrafos da carta. */
   transform: scale(1.1);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .card p:first-of-type {
-  color: #d32f2f;
+  /* Estilo específico para o primeiro parágrafo (provavelmente Ataque). */
+  color: #d32f2f; /* Cor vermelha */
   background-color: rgba(211, 47, 47, 0.1);
   border-left: 4px solid #d32f2f;
 }
 
 .card p:last-of-type {
-  color: #388e3c;
+  /* Estilo específico para o último parágrafo (provavelmente Defesa). */
+  color: #388e3c; /* Cor verde */
   background-color: rgba(56, 142, 60, 0.1);
   border-left: 4px solid #388e3c;
 }
 
+/* Feedback Visual de Drag and Drop */
 .card.dragging {
+  /* Estilo para uma carta enquanto ela está sendo arrastada. */
   opacity: 0.7;
   transform: scale(1.05) translateY(-10px);
   border: 2px solid var(--dourado-claro);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  cursor: grabbing;
+  z-index: 1000; /* Garante que a carta arrastada fique no topo. */
+  cursor: grabbing; /* Cursor indica que um item está sendo segurado. */
 }
 
 .areaGuerreiro1.drag-over,
 .areaGuerreiro2.drag-over {
+  /* Estilo para as zonas de drop quando um item arrastável está sobre elas. */
   background-color: #4a4a4a;
-  border: 2px dashed #00ff7f;
-  box-shadow: 0 0 45px rgba(0, 255, 127, 1);
+  border: 2px dashed #00ff7f; /* Borda verde pontilhada. */
+  box-shadow: 0 0 45px rgba(0, 255, 127, 1); /* Brilho verde. */
   transform: scale(1.02);
-  animation: pulse 1.6s ease-in-out infinite;
+  animation: pulse 1.6s ease-in-out infinite; /* Animação pulsante para indicar área soltável. */
 }
 
 .areaGuerreiro1.drag-over p,
 .areaGuerreiro2.drag-over p {
+  /* Estilo para o texto de placeholder em zonas de drop ativas. */
   opacity: 1;
   transform: scale(1.2);
   color: var(--cor-cartao);
@@ -440,13 +524,17 @@ main {
 }
 
 .deck.drag-over-deck {
+  /* Estilo para o baralho quando um item arrastável está sobre ele. */
   background-color: #4a4a4a;
   border: 2px dashed var(--dourado-claro);
   box-shadow: 0 0 30px rgba(242, 210, 114, 0.9);
   transform: scale(1.01);
-  animation: pulse 1.6s ease-in-out infinite;
+  animation: pulse 1.6s ease-in-out infinite; /* Animação pulsante. */
 }
 
+/* Tematização Específica de Cartas: Define cores de borda únicas e uma
+   variável CSS personalizada '--theme-color' para cada ID de carta.
+   Isso permite mudanças dinâmicas de fundo na arena baseadas na carta solta. */
 #zeus {
   border-color: #ffd700;
   --theme-color: #ffec8b;
@@ -486,4 +574,83 @@ main {
 #hermes {
   border-color: #a9a9a9;
   --theme-color: #d3d3d3;
+}
+
+/* Animações de Combate (Versão Ajustada) */
+@keyframes attack-animation {
+  /* Animação para a carta que está atacando */
+  0% {
+    transform: translate(0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, -20px) scale(1.1);
+    box-shadow: 0 0 25px #ff4500;
+  }
+  100% {
+    transform: translate(0, 0) scale(1.05);
+  }
+}
+
+@keyframes take-damage-animation {
+  /* Animação para a carta que está recebendo dano */
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes defeat-animation {
+  /* Animação para a carta derrotada (mantida em 1s para dar peso à derrota) */
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    filter: grayscale(0);
+  }
+  50% {
+    transform: rotate(-15deg) translateY(20px);
+    opacity: 0.5;
+    filter: grayscale(1);
+  }
+  100% {
+    transform: scale(0.8) translateY(100px);
+    opacity: 0;
+    filter: grayscale(1) blur(2px);
+  }
+}
+
+/* Classes para acionar as animações com timing ajustado */
+.card.attacking {
+  /* Duração reduzida para um ataque mais rápido */
+  animation: attack-animation 0.4s ease-in-out;
+  z-index: 10;
+}
+
+.card.taking-damage {
+  /* Duração reduzida para uma reação de dano mais instantânea */
+  animation: take-damage-animation 0.4s linear;
+}
+
+.card.defeated {
+  animation: defeat-animation 1s ease-in-out forwards;
+}
+::selection {
+  background-color: var(--dourado-claro);
+  color: var(--dourado-escuro);
+}
+.desabilitar-mouse {
+  pointer-events: none;
+  cursor: default; /* Opcional: muda o cursor para o padrão, indicando que não há interação */
 }
